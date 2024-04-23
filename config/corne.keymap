@@ -31,20 +31,6 @@
             bindings = <&kp LEFT_CONTROL &kp LEFT_GUI &kp UP_ARROW>;
             label = "WS_UP";
         };
-
-        WS_LEFT: WS_RIGHT {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_CONTROL &kp LEFT_GUI &kp LEFT_ARROW>;
-            label = "WS_RIGHT";
-        };
-
-        WS_RIGHT: WS_RIGHT {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_CONTROL &kp LEFT_GUI &kp RIGHT>;
-            label = "WS_RIGHT";
-        };
     };
 
     keymap {
@@ -75,7 +61,7 @@
             bindings = <
 &kp TAB     &kp N1  &kp N2            &kp N3          &kp N4                  &kp N5                &kp HOME    &kp PAGE_DOWN     &kp PAGE_UP  &kp END    &kp END  &none
 &bt BT_CLR  &trans  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &ALT_TAB                &mt CAPSLOCK GRAVE    &kp LEFT    &kp DOWN          &kp UP       &kp RIGHT  &trans   &trans
-&kp LSHFT   &none   &WS_LEFT          &WS_UP          &WS_DOWN                &WS_RIGHT             &trans      &kp C_PLAY_PAUSE  &trans       &trans     &trans   &trans
+&kp LSHFT   &none   &WS_DOWN          &WS_UP          &WS_DOWN                &WS_UP                &trans      &kp C_PLAY_PAUSE  &trans       &trans     &trans   &trans
                                       &trans          &mt ENTER LEFT_CONTROL  &kp DEL               &kp ESCAPE  &trans            &trans
             >;
         };
