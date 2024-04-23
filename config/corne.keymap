@@ -10,11 +10,15 @@
 #include <dt-bindings/zmk/mouse.h>
 
 &mt {
-    tapping-term-ms = <150>;
+    tapping-term-ms = <125>;
     flavor = "tap-preferred";
+    bindings = <&kp>, <&kp>;
+
+    require-prior-idle-ms = <125>;
 };
 
-/ { keymap {
+/ {
+    keymap {
         compatible = "zmk,keymap";
 
         default_layer {
