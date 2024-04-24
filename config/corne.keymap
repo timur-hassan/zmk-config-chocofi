@@ -14,7 +14,7 @@
     flavor = "tap-preferred";
     bindings = <&kp>, <&kp>;
 
-    require-prior-idle-ms = <75>;
+    require-prior-idle-ms = <125>;
 };
 
 / {
