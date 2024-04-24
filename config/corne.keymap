@@ -39,8 +39,8 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&none  &mt EQUAL Q  &mt TILDE W  &mt EXCL E           &mt AT_SIGN R           &mt TAB T              &mt LC(Y) Y  &kp U                 &mt PIPE I           &mt EXCL O               &mt SINGLE_QUOTE P   &none
-&none  &lt 1 A      &mt UNDER S  &mt MINUS D          &mt LA(TAB) F           &mt ESCAPE G           &mt HASH H   &kp J                 &kp K                &kp L                    &mt COLON SEMICOLON  &none
+&none  &mt EQUAL Q  &mt TILDE W  &mt EXCL E           &mt AT_SIGN R           &mt TAB T              &mt LC(Y) Y  &kp U                 &mt PIPE I           &kp O                    &mt SINGLE_QUOTE P   &none
+&none  &lt 1 A      &mt UNDER S  &mt MINUS D          &mt LA(TAB) F           &mt GRAVE G            &mt HASH H   &kp J                 &kp K                &kp L                    &mt COLON SEMICOLON  &none
 &none  &mt LC(Z) Z  &mt LC(X) X  &mt LC(C) C          &mt LC(V) V             &mt LC(AMPERSAND) B    &mt PLUS N   &mt K_PLAY_PAUSE M    &mt LESS_THAN COMMA  &mt GREATER_THAN PERIOD  &mt BACKSLASH SLASH  &none
                                  &mt LEFT_ALT ESCAPE  &mt LEFT_CONTROL SPACE  &lt 2 BACKSPACE        &lt 1 ESC    &mt LEFT_SHIFT ENTER  &kp LEFT_GUI
             >;
