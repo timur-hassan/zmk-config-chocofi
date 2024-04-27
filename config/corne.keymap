@@ -26,6 +26,11 @@
             key-positions = <38 39>;
             layers = <0>;
         };
+
+        LAYER4 {
+            bindings = <&to 4>;
+            key-positions = <16 19 21 14>;
+        };
     };
 
     behaviors {
@@ -99,10 +104,10 @@
 
         layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
+&trans  &kp ESCAPE  &mkp LCLK  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans      &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans      &trans     &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                               &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
