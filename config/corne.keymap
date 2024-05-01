@@ -14,7 +14,7 @@
     flavor = "tap-preferred";
     bindings = <&kp>, <&kp>;
 
-    require-prior-idle-ms = <125>;
+    require-prior-idle-ms = <100>;
 };
 
 / {
@@ -104,7 +104,7 @@
 
         layer_4 {
             bindings = <
-&trans  &kp ESCAPE  &mkp LCLK  &kp ESCAPE  &trans  &to 0     &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp ESCAPE  &mkp LCLK  &kp RETURN  &trans  &to 0     &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans      &trans     &trans      &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans      &trans     &trans      &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                                &trans      &trans  &trans    &trans  &trans  &trans
