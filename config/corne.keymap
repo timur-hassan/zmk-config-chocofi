@@ -22,7 +22,7 @@
         compatible = "zmk,combos";
 
         L5 {
-            bindings = <&mo 5>;
+            bindings = <&mo 4>;
             key-positions = <38 39>;
             layers = <0>;
         };
