@@ -12,8 +12,6 @@
 &mt {
     tapping-term-ms = <140>;
     flavor = "tap-preferred";
-    bindings = <&kp>, <&kp>;
-
     require-prior-idle-ms = <100>;
 };
 
@@ -22,7 +20,7 @@
         compatible = "zmk,combos";
 
         L5 {
-            bindings = <&mo 4>;
+            bindings = <&mo 3>;
             key-positions = <38 39>;
             layers = <0>;
         };
@@ -43,6 +41,17 @@
             tapping-term-ms = <125>;
             flavor = "hold-preferred";
         };
+
+        mti: mti {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MTI";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            flavor = "tap-preferred";
+            require-prior-idle-ms = <100>;
+        };
     };
 
     keymap {
@@ -56,7 +65,7 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&none  &mt EQUAL Q  &mt TILDE W  &mt EXCL E    &mt AT_SIGN R           &mt CARET T        &mt LC(Y) Y  &mt QUESTION U             &mt PIPE I           &mt ASTERISK O           &mt SINGLE_QUOTE P   &none
+&none  &mt EQUAL Q  &mt TILDE W  &mt EXCL E    &mt AT_SIGN R           &mt CARET T        &mt LC(Y) Y  &mt QUESTION U             &mti PIPE I          &mt ASTERISK O           &mt SINGLE_QUOTE P   &none
 &none  &lt 1 A      &mt UNDER S  &mt MINUS D   &mt TAB F               &mt GRAVE G        &mt HASH H   &kp J                      &kp K                &kp L                    &mt COLON SEMICOLON  &none
 &none  &mt LC(Z) Z  &mt LC(X) X  &mt LC(C) C   &mt LC(V) V             &mt AMPERSAND B    &mt PLUS N   &mt PERCENT M              &mt LESS_THAN COMMA  &mt GREATER_THAN PERIOD  &mt BACKSLASH SLASH  &none
                                  &kp LEFT_ALT  &mt LEFT_CONTROL SPACE  &lt 2 BACKSPACE    &lt 1 ESC    &mt0 LS(LEFT_SHIFT) ENTER  &kp LEFT_GUI
@@ -71,10 +80,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none   &bt BT_SEL 0  &mkp MCLK         &mkp RCLK                &mkp LCLK                   &kp F8                            &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN  &none
-&trans  &trans        &kp LEFT_CONTROL  &kp LEFT_SHIFT           &kp TAB                     &mt CAPSLOCK GRAVE                &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &trans           &trans
-&trans  &bt BT_SEL 1  &bt BT_CLR        &mt LG(LEFT) LC(LG(UP))  &mt LG(RIGHT) LC(LG(DOWN))  &mt LC(LG(RIGHT)) LC(LG(LEFT))    &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4     &trans
-                                        &trans                   &mt LEFT_CONTROL ENTER      &kp DEL                           &trans        &trans         &trans
+&none   &bt BT_CLR  &mkp MCLK         &mkp RCLK                &mkp LCLK                   &none                             &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN  &none
+&trans  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT           &kp TAB                     &mt CAPSLOCK GRAVE                &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &trans           &trans
+&trans  &none       &none             &mt LG(LEFT) LC(LG(UP))  &mt LG(RIGHT) LC(LG(DOWN))  &mt LC(LG(RIGHT)) LC(LG(LEFT))    &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4     &trans
+                                      &trans                   &mt LEFT_CONTROL ENTER      &kp DEL                           &trans        &trans         &trans
             >;
         };
 
