@@ -121,10 +121,10 @@
 
         layer_5 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp LG(NUMBER_7)  &kp LG(NUMBER_8)  &kp LG(NUMBER_9)  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp LG(NUMBER_4)  &kp LG(NUMBER_5)  &kp LG(NUMBER_6)  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &kp LG(NUMBER_3)  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans            &trans
+&trans  &kp EQUAL     &kp TILDE       &kp EXCLAMATION  &kp AT    &kp CARET        &trans  &kp LG(NUMBER_7)  &kp LG(NUMBER_8)  &kp LG(NUMBER_9)  &trans  &trans
+&trans  &kp ASTERISK  &kp UNDERSCORE  &kp MINUS        &trans    &kp GRAVE        &trans  &kp LG(NUMBER_4)  &kp LG(NUMBER_5)  &kp LG(NUMBER_6)  &trans  &trans
+&trans  &kp HASH      &kp QUESTION    &kp APOSTROPHE   &kp PIPE  &kp AMPERSAND    &trans  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &kp LG(NUMBER_3)  &trans  &trans
+                                      &trans           &trans    &trans           &trans  &trans            &trans
             >;
         };
     };
