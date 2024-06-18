@@ -79,7 +79,7 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none   &bt BT_CLR  &mkp MCLK         &mkp RCLK                &mkp LCLK                   &mo 3                             &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
+&none   &bt BT_CLR  &mkp MCLK         &mkp RCLK                &mkp LCLK                   &kp K_APPLICATION                 &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
 &trans  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT           &kp TAB                     &mt CAPSLOCK GRAVE                &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &kp K_PLAY_PAUSE  &trans
 &trans  &none       &none             &mt LG(LEFT) LC(LG(UP))  &mt LG(RIGHT) LC(LG(DOWN))  &mt LC(LG(RIGHT)) LC(LG(LEFT))    &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
                                       &trans                   &mt LEFT_CONTROL ENTER      &kp DEL                           &trans        &trans         &trans
