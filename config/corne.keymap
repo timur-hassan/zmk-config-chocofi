@@ -28,6 +28,11 @@
             bindings = <&to 4>;
             key-positions = <16 19 21 14>;
         };
+
+        Layer5 {
+            bindings = <&to 5>;
+            key-positions = <19 39>;
+        };
     };
 
     behaviors {
