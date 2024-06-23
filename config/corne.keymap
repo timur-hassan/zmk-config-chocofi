@@ -104,15 +104,6 @@
             >;
         };
 
-        layer_4 {
-            bindings = <
-&trans  &kp ESCAPE  &mkp LCLK  &kp RETURN  &trans  &to 0     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &trans     &trans      &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &trans     &trans      &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                               &trans      &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
         layer_5 {
             bindings = <
 &trans  &kp EQUAL     &kp TILDE       &kp EXCLAMATION  &kp AT     &kp CARET        &trans  &kp LG(NUMBER_7)  &kp LG(NUMBER_8)  &kp LG(NUMBER_9)  &trans  &trans
