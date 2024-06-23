@@ -73,10 +73,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none   &bt BT_CLR  &mkp MCLK         &mkp RCLK                &mkp LCLK                   &kp K_APPLICATION                 &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
-&trans  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT           &kp TAB                     &mt CAPSLOCK GRAVE                &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &kp K_PLAY_PAUSE  &trans
-&trans  &none       &none             &mt LG(LEFT) LC(LG(UP))  &mt LG(RIGHT) LC(LG(DOWN))  &mt LC(LG(RIGHT)) LC(LG(LEFT))    &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
-                                      &trans                   &mt LEFT_CONTROL ENTER      &kp DEL                           &trans        &trans         &trans
+&none  &bt BT_CLR  &mkp MCLK         &mkp RCLK                &mkp LCLK                   &kp K_APPLICATION                 &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
+&none  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT           &kp TAB                     &mt CAPSLOCK GRAVE                &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &kp K_PLAY_PAUSE  &trans
+&none  &none       &none             &mt LG(LEFT) LC(LG(UP))  &mt LG(RIGHT) LC(LG(DOWN))  &mt LC(LG(RIGHT)) LC(LG(LEFT))    &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
+                                     &trans                   &mt LEFT_CONTROL ENTER      &kp DEL                           &trans        &trans         &trans
             >;
         };
 
@@ -95,7 +95,7 @@
             >;
         };
 
-        layer_3 {
+        FN {
             bindings = <
 &none  &trans  &trans  &trans            &trans             &trans    &trans  &kp F7  &kp F8  &kp F9  &kp F10  &none
 &none  &trans  &trans  &kp LC(LG(LEFT))  &kp LC(LG(RIGHT))  &trans    &trans  &kp F4  &kp F5  &kp F6  &kp F11  &none
@@ -104,12 +104,12 @@
             >;
         };
 
-        layer_5 {
+        LGUI-N {
             bindings = <
-&trans  &kp EQUAL     &kp TILDE       &kp EXCLAMATION  &kp AT     &kp CARET        &trans  &kp LG(NUMBER_7)  &kp LG(NUMBER_8)  &kp LG(NUMBER_9)  &trans  &trans
-&trans  &kp ASTERISK  &kp UNDERSCORE  &kp MINUS        &kp COLON  &kp GRAVE        &trans  &kp LG(NUMBER_4)  &kp LG(NUMBER_5)  &kp LG(NUMBER_6)  &trans  &trans
-&trans  &kp HASH      &kp QUESTION    &kp APOSTROPHE   &kp PIPE   &kp AMPERSAND    &trans  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &kp LG(NUMBER_3)  &trans  &trans
-                                      &trans           &trans     &trans           &trans  &trans            &trans
+&none  &kp EQUAL     &kp TILDE       &kp EXCLAMATION  &kp AT     &kp CARET        &trans  &kp LG(NUMBER_7)  &kp LG(NUMBER_8)  &kp LG(NUMBER_9)  &trans  &none
+&none  &kp ASTERISK  &kp UNDERSCORE  &kp MINUS        &kp COLON  &kp GRAVE        &trans  &kp LG(NUMBER_4)  &kp LG(NUMBER_5)  &kp LG(NUMBER_6)  &trans  &none
+&none  &kp HASH      &kp QUESTION    &kp APOSTROPHE   &kp PIPE   &kp AMPERSAND    &trans  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &kp LG(NUMBER_3)  &trans  &trans
+                                     &trans           &trans     &trans           &trans  &trans            &trans
             >;
         };
     };
