@@ -104,7 +104,7 @@
             >;
         };
 
-        LGUI-N {
+        LGUI_N {
             bindings = <
 &none  &kp EQUAL     &kp TILDE       &kp EXCLAMATION  &kp AT     &kp CARET        &trans  &kp LG(NUMBER_7)  &kp LG(NUMBER_8)  &kp LG(NUMBER_9)  &trans  &none
 &none  &kp ASTERISK  &kp UNDERSCORE  &kp MINUS        &kp COLON  &kp GRAVE        &trans  &kp LG(NUMBER_4)  &kp LG(NUMBER_5)  &kp LG(NUMBER_6)  &trans  &none
