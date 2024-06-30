@@ -12,6 +12,7 @@
 &mt {
     tapping-term-ms = <135>;
     flavor = "tap-preferred";
+    require-prior-idle-ms = <0>;
 };
 
 / {
@@ -73,10 +74,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none  &bt BT_CLR  &mkp MCLK         &mkp RCLK                &mkp LCLK                   &kp K_APPLICATION                 &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
-&none  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT           &kp TAB                     &mt CAPSLOCK GRAVE                &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &kp K_PLAY_PAUSE  &trans
-&none  &none       &none             &mt LG(LEFT) LC(LG(UP))  &mt LG(RIGHT) LC(LG(DOWN))  &mt LC(LG(RIGHT)) LC(LG(LEFT))    &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
-                                     &trans                   &mt LEFT_CONTROL ENTER      &kp DEL                           &trans        &trans         &trans
+&none  &bt BT_CLR  &mkp MCLK         &mkp RCLK                  &mkp LCLK                    &kp K_APPLICATION                 &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
+&none  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT             &kp TAB                      &mt CAPSLOCK GRAVE                &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &kp K_PLAY_PAUSE  &trans
+&none  &none       &none             &mt LG(LEFT) LC(LG(LEFT))  &mt LG(RIGHT) LC(LG(RIGHT))  &mt LC(LG(RIGHT)) LC(LG(LEFT))    &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
+                                     &trans                     &mt LEFT_CONTROL ENTER       &kp DEL                           &trans        &trans         &trans
             >;
         };
 
@@ -89,7 +90,7 @@
 
             bindings = <
 &none  &kp EQUAL    &kp TILDE       &kp EXCLAMATION       &kp AT                 &kp PRCNT        &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH   &none
-&none  &kp MINUS    &kp UNDERSCORE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &mo 3            &kp MINUS     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans      &none
+&none  &kp MINUS    &kp UNDERSCORE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &mo 3            &kp MINUS     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COMMA   &none
 &none  &kp PERCENT  &none           &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AMPERSAND    &kp PLUS      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD  &none
                                     &kp LGUI              &trans                 &trans           &none         &trans        &kp NUMBER_0
             >;
