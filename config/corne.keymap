@@ -10,7 +10,7 @@
 #include <dt-bindings/zmk/mouse.h>
 
 &mt {
-    tapping-term-ms = <135>;
+    tapping-term-ms = <125>;
     flavor = "tap-preferred";
     require-prior-idle-ms = <100>;
 };
@@ -53,7 +53,7 @@
         xl_del_row: xl_del_row {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(SPACE) &mkp RCLK &kp D>;
+            bindings = <&kp LC(MINUS) &kp R &kp ENTER>;
             label = "XL_DEL_ROW";
         };
     };
