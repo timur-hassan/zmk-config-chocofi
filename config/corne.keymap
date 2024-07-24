@@ -24,6 +24,11 @@
             key-positions = <38 39>;
             layers = <0>;
         };
+
+        QR-L3 {
+            bindings = <&mo 3>;
+            key-positions = <1 4>;
+        };
     };
 
     behaviors {
