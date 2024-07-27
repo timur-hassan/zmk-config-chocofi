@@ -29,6 +29,11 @@
             bindings = <&mo 3>;
             key-positions = <1 4>;
         };
+
+        Gaming_Layer_RimWorld {
+            bindings = <&to 5>;
+            key-positions = <16 14 19 21>;
+        };
     };
 
     behaviors {
@@ -126,6 +131,15 @@
 &none  &kp ASTERISK  &kp UNDERSCORE  &kp MINUS        &kp COLON  &kp GRAVE        &trans  &kp LG(NUMBER_4)  &kp LG(NUMBER_5)  &kp LG(NUMBER_6)  &trans  &none
 &none  &kp HASH      &kp QUESTION    &kp APOSTROPHE   &kp PIPE   &kp AMPERSAND    &trans  &kp LG(NUMBER_1)  &kp LG(NUMBER_2)  &kp LG(NUMBER_3)  &trans  &trans
                                      &trans           &trans     &trans           &trans  &trans            &trans
+            >;
+        };
+
+        layer_5 {
+            bindings = <
+&trans  &kp Q  &kp W  &kp E      &kp R    &kp T      &kp Y    &kp U      &kp I      &kp O    &kp P     &trans
+&trans  &kp A  &kp S  &kp D      &kp F    &kp G      &kp H    &kp J      &kp K      &kp L    &kp SEMI  &trans
+&trans  &kp Z  &kp X  &kp C      &kp V    &kp B      &kp N    &kp M      &kp COMMA  &kp DOT  &kp FSLH  &trans
+                      &kp SPACE  &kp RET  &kp ESC    &kp TAB  &kp LCTRL  &kp LSHFT
             >;
         };
     };
