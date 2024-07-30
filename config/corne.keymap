@@ -94,10 +94,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none  &bt BT_CLR  &mkp MCLK         &mkp RCLK                          &mkp LCLK                       &kp K_APPLICATION    &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
-&none  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT                     &kp TAB                         &mt CAPSLOCK F2      &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &kp K_PLAY_PAUSE  &trans
-&none  &none       &none             &mt LG(LC(UP_ARROW)) LC(LG(LEFT))  &mt LG(LC(DOWN)) LC(LG(RIGHT))  &xl_del_row          &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
-                                     &trans                             &mt LEFT_CONTROL ENTER          &kp DEL              &trans        &trans         &trans
+&none  &bt BT_CLR  &mkp MCLK         &mkp RCLK         &mkp LCLK               &kp K_APPLICATION    &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
+&none  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT    &kp TAB                 &mt CAPSLOCK F2      &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &kp K_PLAY_PAUSE  &trans
+&none  &none       &none             &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))       &xl_del_row          &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
+                                     &trans            &mt LEFT_CONTROL ENTER  &kp DEL              &trans        &trans         &trans
             >;
         };
 
