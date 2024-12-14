@@ -131,7 +131,7 @@
 &none  &kp EQUAL    &kp TILDE       &kp EXCLAMATION       &kp AT                 &kp PRCNT        &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH   &none
 &none  &kp MINUS    &kp UNDERSCORE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &mo 3            &kp MINUS     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COMMA   &none
 &none  &kp PERCENT  &none           &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AMPERSAND    &kp PLUS      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD  &none
-                                    &kp LGUI              &trans                 &trans           &none         &trans        &kp NUMBER_0
+                                    &kp LEFT_ALT          &trans                 &trans           &none         &trans        &kp NUMBER_0
             >;
         };
 
