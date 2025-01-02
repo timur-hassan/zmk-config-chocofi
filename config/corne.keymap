@@ -26,19 +26,16 @@
             layers = <0>;
         };
 
-        QR-L3 {
-            bindings = <&mo 3>;
-            key-positions = <1 4>;
-        };
-
-        Gaming_Layer_RimWorld {
-            bindings = <&to 5>;
-            key-positions = <16 14 19 21>;
-        };
-
-        Layer_0 {
+        return_to_default {
             bindings = <&to 0>;
-            key-positions = <13 15 22 20>;
+            key-positions = <1 5 38>;
+            layers = <7>;
+        };
+
+        excalidraw {
+            bindings = <&to 7>;
+            key-positions = <1 5 38>;
+            layers = <0>;
         };
     };
 
@@ -169,6 +166,15 @@
 &trans  &kp A  &kp S  &kp D    &kp F      &kp G      &kp H  &kp J   &kp K      &kp L    &kp SEMI  &trans
 &trans  &kp Z  &kp X  &kp C    &kp V      &kp B      &kp N  &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
                       &kp ESC  &kp LCTRL  &kp TAB    &to 0  &trans  &trans
+            >;
+        };
+
+        excalidraw {
+            bindings = <
+&trans  &trans  &kp N9  &kp N8  &kp N7  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp N6  &kp N5  &kp N4  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp N3  &kp N2  &kp N1  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &kp N0  &trans  &trans    &trans  &trans  &trans
             >;
         };
     };
