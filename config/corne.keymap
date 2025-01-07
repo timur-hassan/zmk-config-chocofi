@@ -37,6 +37,11 @@
             key-positions = <1 5 38>;
             layers = <0>;
         };
+
+        Goto_6 {
+            bindings = <&to 6>;
+            key-positions = <16 14 19 21>;
+        };
     };
 
     behaviors {
