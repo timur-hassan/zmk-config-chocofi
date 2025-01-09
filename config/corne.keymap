@@ -176,10 +176,10 @@
 
         excalidraw {
             bindings = <
-&trans  &kp LA(Z)     &kp N9        &kp LS(LC(N8))  &kp LC(Z)  &trans        &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp NUMBER_1  &kp H         &kp N0          &kp N7     &trans        &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4    &kp N5     &trans        &trans  &trans  &trans  &trans  &trans  &trans
-                                    &kp N0          &kp ESC    &kp DELETE    &to 0   &trans  &trans
+&trans  &kp LA(Z)     &kp N9        &kp LS(LC(Z))  &kp LC(Z)  &trans        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp NUMBER_1  &kp H         &kp N0         &kp N7     &trans        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4   &kp N5     &trans        &trans  &trans  &trans  &trans  &trans  &trans
+                                    &kp N0         &kp ESC    &kp DELETE    &to 0   &trans  &trans
             >;
         };
     };
