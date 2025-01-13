@@ -131,7 +131,7 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none  &kp EQUAL    &kp TILDE       &kp EXCLAMATION       &kp AT                 &kp PRCNT        &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH   &none
+&to 7  &kp EQUAL    &kp TILDE       &kp EXCLAMATION       &kp AT                 &kp PRCNT        &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH   &none
 &none  &kp MINUS    &kp UNDERSCORE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &mo 3            &kp MINUS     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COMMA   &none
 &none  &kp PERCENT  &to 6           &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AMPERSAND    &kp PLUS      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD  &none
                                     &kp LEFT_ALT          &trans                 &trans           &none         &trans        &kp NUMBER_0
@@ -176,7 +176,7 @@
 
         excalidraw {
             bindings = <
-&trans  &kp LA(Z)     &kp N9        &kp LS(LC(Z))  &kp LC(Z)  &trans        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LA(Z)     &lt 0 W       &kp LS(LC(Z))  &kp LC(Z)  &trans        &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp NUMBER_1  &kp H         &kp N0         &kp N7     &trans        &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4   &kp N5     &trans        &trans  &trans  &trans  &trans  &trans  &trans
                                     &kp N0         &kp ESC    &kp DELETE    &to 0   &trans  &trans
