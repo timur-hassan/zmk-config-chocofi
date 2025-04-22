@@ -82,7 +82,6 @@
             #binding-cells = <0>;
             bindings = <&kp NUMBER_2 &kp RPAR &kp LS(J) &kp F &kp L &kp S &kp J &kp F &kp L &kp S>;
             label = "NAB1";
-            wait-ms = <125>;
         };
     };
 
