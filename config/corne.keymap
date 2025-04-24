@@ -27,7 +27,7 @@
         };
 
         Excalidraw {
-            bindings = <&to 4>;
+            bindings = <&to 0>;
             key-positions = <1 5 38>;
             layers = <0>;
         };
@@ -35,7 +35,6 @@
         to_zero {
             bindings = <&none>;
             key-positions = <0 5 38>;
-            layers = <4>;
         };
     };
 
@@ -83,6 +82,13 @@
             bindings = <&kp NUMBER_2 &kp RPAR &kp LS(J) &kp F &kp L &kp S &kp J &kp F &kp L &kp S>;
             label = "NAB1";
         };
+
+        xl_all_borders: xl_all_borders {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_ALT &kp H &kp B &kp A>;
+            label = "XL_ALL_BORDERS";
+        };
     };
 
     keymap {
@@ -126,10 +132,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none  &to 4        &kp TILDE       &kp EXCLAMATION       &kp AT                 &kp PRCNT        &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH   &none
-&none  &kp MINUS    &kp UNDERSCORE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &mo 3            &kp MINUS     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COMMA   &none
-&none  &kp PERCENT  &to 0           &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AMPERSAND    &kp PLUS      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD  &none
-                                    &kp LEFT_ALT          &trans                 &trans           &none         &trans        &kp NUMBER_0
+&none  &none        &kp TILDE       &kp EXCLAMATION       &kp AT                 &kp PRCNT          &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH   &none
+&none  &kp MINUS    &kp UNDERSCORE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &xl_all_borders    &kp MINUS     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COMMA   &none
+&none  &kp PERCENT  &to 0           &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AMPERSAND      &kp PLUS      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD  &none
+                                    &kp LEFT_ALT          &trans                 &trans             &none         &trans        &kp NUMBER_0
             >;
         };
 
@@ -139,15 +145,6 @@
 &none  &trans  &trans  &kp LC(LG(LEFT))  &kp LC(LG(RIGHT))  &trans    &trans  &kp F4  &kp F5  &kp F6  &kp F11  &none
 &none  &trans  &trans  &trans            &trans             &trans    &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
                        &trans            &trans             &trans    &trans  &trans  &trans
-            >;
-        };
-
-        excalidraw {
-            bindings = <
-&trans  &kp LA(Z)     &to 0         &kp LS(LC(Z))  &kp LC(Z)  &kp LC(NUMBER_0)    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp NUMBER_1  &kp H         &kp N0         &kp N7     &kp LC(G)           &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4   &kp N5     &trans              &trans  &trans  &trans  &trans  &trans  &trans
-                                    &to 0          &kp ESC    &kp DELETE          &to 0   &trans  &trans
             >;
         };
     };
