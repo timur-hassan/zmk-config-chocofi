@@ -79,7 +79,7 @@
         NAB1: NAB1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp NUMBER_2 &kp RPAR &kp LS(J) &kp F &kp L &kp S &kp J &kp F &kp L &kp S>;
+            bindings = <&kp NUMBER_2 &kp MINUS &kp LS(J) &kp F &kp L &kp S &kp J &kp F &kp L &kp S>;
             label = "NAB1";
         };
 
