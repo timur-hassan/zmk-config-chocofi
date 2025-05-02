@@ -69,14 +69,14 @@
             label = "XL_DEL_ROW";
         };
 
-        NAB: NAB {
+        N: NAB {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp N1 &kp N6 &kp N2 &kp N5 &kp N2 &kp N5 &kp N3 &kp N6 &kp EXCL>;
             label = "NAB";
         };
 
-        NAB1: NAB1 {
+        N1: NAB1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp NUMBER_2 &kp MINUS &kp LS(J) &kp F &kp L &kp S &kp J &kp F &kp L &kp S>;
@@ -119,7 +119,7 @@
             bindings = <
 &none  &bt BT_CLR  &mkp MCLK         &mkp MB2          &mkp LCLK               &kp K_APPLICATION    &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
 &none  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT    &kp TAB                 &mt CAPSLOCK F2      &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &kp K_PLAY_PAUSE  &trans
-&none  &NAB1       &NAB              &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))       &xl_del_row          &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
+&none  &N1         &N                &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))       &xl_del_row          &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
                                      &trans            &mt LEFT_CONTROL ENTER  &kp DEL              &trans        &trans         &trans
             >;
         };
