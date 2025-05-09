@@ -58,18 +58,18 @@
             label = "XL_DEL_ROW";
         };
 
-        N: NAB {
+        N: N {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp N1 &kp N6 &kp N2 &kp N5 &kp N2 &kp N5 &kp N3 &kp N6 &kp EXCL>;
-            label = "NAB";
+            label = "N";
         };
 
-        N1: NAB1 {
+        N1: N1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp NUMBER_2 &kp MINUS &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S>;
-            label = "NAB1";
+            bindings = <&kp NUMBER_2 &kp EXCLAMATION &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S>;
+            label = "N1";
         };
 
         xl_all_borders: xl_all_borders {
