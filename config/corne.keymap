@@ -25,17 +25,6 @@
             key-positions = <38 39>;
             layers = <0>;
         };
-
-        Excalidraw {
-            bindings = <&to 0>;
-            key-positions = <1 5 38>;
-            layers = <0>;
-        };
-
-        to_zero {
-            bindings = <&none>;
-            key-positions = <0 5 38>;
-        };
     };
 
     behaviors {
@@ -88,6 +77,13 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_ALT &kp H &kp B &kp A>;
             label = "XL_ALL_BORDERS";
+        };
+
+        cell_magic_sql: cell_magic_sql {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp PERCENT &kp PERCENT &kp S &kp Q &kp L>;
+            label = "CELL_MAGIC_SQL";
         };
     };
 
@@ -143,7 +139,7 @@
             bindings = <
 &none  &trans  &trans  &trans            &trans             &trans    &trans  &kp F7  &kp F8  &kp F9  &kp F10  &none
 &none  &trans  &trans  &kp LC(LG(LEFT))  &kp LC(LG(RIGHT))  &trans    &trans  &kp F4  &kp F5  &kp F6  &kp F11  &none
-&none  &trans  &trans  &trans            &trans             &trans    &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
+&none  &trans  &trans  &trans            &cell_magic_sql    &trans    &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
                        &trans            &trans             &trans    &trans  &trans  &trans
             >;
         };
