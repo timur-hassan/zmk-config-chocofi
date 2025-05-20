@@ -65,13 +65,6 @@
             label = "XL_ALL_BORDERS";
         };
 
-        cell_magic_sql: cell_magic_sql {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp PERCENT &kp PERCENT &kp S &kp Q &kp L>;
-            label = "CELL_MAGIC_SQL";
-        };
-
         NP: NP {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -84,6 +77,27 @@
             #binding-cells = <0>;
             bindings = <&kp NUMBER_1 &kp NUMBER_6 &kp NUMBER_2 &kp N5 &kp NUMBER_2 &kp N5 &kp NUMBER_3 &kp NUMBER_6 &kp EXCLAMATION>;
             label = "NPIN";
+        };
+
+        CDR_POPULATION_IDENTIFIED: CDR_POPULATION_IDENTIFIED {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp P &kp R &kp I &kp S &kp T &kp I &kp N &kp E &kp DOT &kp C &kp D &kp R &kp UNDER &kp O &kp P &kp U &kp L &kp A &kp T &kp I &kp O &kp N &kp UNDER &kp I &kp D &kp E &kp N &kp T &kp I &kp F &kp I &kp E &kp D>;
+            label = "CDR_POPULATION_IDENTIFIED";
+        };
+
+        CDR_REPORTING: CDR_REPORTING {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp P &kp R &kp I &kp S &kp T &kp I &kp N &kp E &kp DOT &kp C &kp D &kp R &kp UNDER &kp R &kp E &kp P &kp O &kp R &kp T &kp I &kp N &kp G>;
+            label = "CDR_REPORTING";
+        };
+
+        XCAR: XCAR {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp P &kp R &kp I &kp S &kp T &kp I &kp N &kp E &kp UNDER &kp C &kp D &kp L &kp DOT &kp B &kp UNDER &kp UNDER &kp C &kp Z &kp UNDER &kp UNDER &kp N2 &kp N8 &kp N4 &kp N4 &kp N2 &kp UNDER &kp C &kp S &kp T &kp UNDER &kp X &kp C &kp A &kp R>;
+            label = "XCAR";
         };
     };
 
@@ -137,10 +151,10 @@
 
         FN {
             bindings = <
-&none  &trans  &trans  &trans            &trans             &trans    &trans  &kp F7  &kp F8  &kp F9  &kp F10  &none
-&none  &trans  &trans  &kp LC(LG(LEFT))  &kp LC(LG(RIGHT))  &trans    &trans  &kp F4  &kp F5  &kp F6  &kp F11  &none
-&none  &trans  &trans  &trans            &cell_magic_sql    &trans    &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
-                       &trans            &trans             &trans    &trans  &trans  &trans
+&none  &none                       &none           &none   &none   &none     &trans  &kp F7  &kp F8  &kp F9  &kp F10  &none
+&none  &CDR_POPULATION_IDENTIFIED  &CDR_REPORTING  &XCAR   &none   &none     &trans  &kp F4  &kp F5  &kp F6  &kp F11  &none
+&none  &none                       &none           &none   &none   &none     &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
+                                                   &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
     };
