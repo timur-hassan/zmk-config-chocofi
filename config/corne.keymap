@@ -82,7 +82,7 @@
         CDR_POPULATION_IDENTIFIED: CDR_POPULATION_IDENTIFIED {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp P &kp R &kp I &kp S &kp T &kp I &kp N &kp E &kp DOT &kp C &kp D &kp R &kp UNDER &kp P &kp O &kp P &kp U &kp L &kp A &kp T &kp I &kp O &kp N &kp UNDER &kp I &kp D &kp E &kp N &kp T &kp I &kp F &kp I &none>;
+            bindings = <&kp C &kp D &kp R &kp UNDER &kp P &kp O &kp P &kp U &kp L &kp A &kp T &kp I &kp O &kp N &kp UNDER &kp I &kp D &kp E &kp N &kp T &kp I &kp F &kp I &kp E &kp D>;
             label = "CDR_POPULATION_IDENTIFIED";
         };
 
@@ -96,7 +96,7 @@
         XCAR: XCAR {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp P &kp R &kp I &kp S &kp T &kp I &kp N &kp E &kp UNDER &kp C &kp D &kp L &kp DOT &kp B &kp UNDER &kp UNDER &kp C &kp Z &kp UNDER &kp UNDER &kp N2 &kp N8 &kp N4 &kp N4 &kp N2 &kp UNDER &kp C &kp S &kp T &kp UNDER &kp X &kp C &kp A &kp R>;
+            bindings = <&none &kp B &kp UNDER &kp UNDER &kp C &kp Z &kp UNDER &kp UNDER &kp N2 &kp N8 &kp N4 &kp N4 &kp N2 &kp UNDER &kp C &kp S &kp T &kp UNDER &kp X &kp C &kp A &kp R>;
             label = "XCAR";
         };
 
@@ -149,7 +149,7 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none  &none        &kp TILDE       &kp EXCLAMATION       &kp AT                 &kp PRCNT          &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH   &none
+&none  &kp EQUAL    &kp TILDE       &kp EXCLAMATION       &kp AT                 &kp PRCNT          &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH   &none
 &none  &kp MINUS    &kp UNDERSCORE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &xl_all_borders    &kp MINUS     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COMMA   &none
 &none  &kp PERCENT  &to 0           &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AMPERSAND      &kp PLUS      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD  &none
                                     &kp LEFT_ALT          &trans                 &trans             &none         &trans        &kp NUMBER_0
