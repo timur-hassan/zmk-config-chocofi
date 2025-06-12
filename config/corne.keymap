@@ -82,7 +82,7 @@
         CDR_POPULATION_IDENTIFIED: CDR_POPULATION_IDENTIFIED {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp C &kp D &kp R &kp UNDER &kp P &kp O &kp P &kp U &kp L &kp A &kp T &kp I &kp O &kp N &kp UNDER &kp I &kp D &kp E &kp N &kp T &kp I &kp F &kp I &kp E &kp D>;
+            bindings = <&kp C &kp D &kp R &kp UNDER &kp P &kp O &kp P &kp U &kp L &kp A &kp T &kp I &kp O &kp N &kp UNDER &kp I &kp D &kp E &kp N &kp T &kp I &kp F &kp I &kp E &kp D &kp SPACE &kp C &kp P &kp I>;
             label = "CDR_POPULATION_IDENTIFIED";
         };
 
