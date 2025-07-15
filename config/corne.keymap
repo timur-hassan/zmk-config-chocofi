@@ -100,11 +100,18 @@
             label = "XCAR";
         };
 
-        testchars: testchars {
+        info_schema: info_schema {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S &kp J &kp F &kp L &kp S>;
-            label = "TESTCHARS";
+            bindings = <&none &kp I &kp N &kp F &kp O &kp R &kp M &kp A &kp T &kp I &kp O &kp N &kp UNDER &kp S &kp C &kp H &kp E &kp M &kp A &kp DOT &kp C &kp O &kp L &kp U &kp M &kp N &kp S>;
+            label = "INFO_SCHEMA";
+        };
+
+        perc_sql: perc_sql {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp PRCNT &kp PRCNT &kp S &kp Q &kp L &kp RET &kp LS(S) &kp LS(E) &kp LS(L) &kp LS(E) &kp LS(C) &kp LS(T) &kp SPACE &kp STAR &kp RET &kp LS(F) &kp LS(R) &kp LS(O) &kp LS(M) &kp SPACE>;
+            label = "PERC_SQL";
         };
     };
 
@@ -158,10 +165,10 @@
 
         FN {
             bindings = <
-&none  &none                       &none           &none   &none       &none     &trans  &kp F7  &kp F8  &kp F9  &kp F10  &none
-&none  &CDR_POPULATION_IDENTIFIED  &CDR_REPORTING  &XCAR   &testchars  &none     &trans  &kp F4  &kp F5  &kp F6  &kp F11  &none
-&none  &none                       &none           &none   &none       &none     &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
-                                                   &trans  &trans      &trans    &trans  &trans  &trans
+&none  &none                       &none           &none   &none         &none     &trans  &kp F7  &kp F8  &kp F9  &kp F10  &none
+&none  &CDR_POPULATION_IDENTIFIED  &CDR_REPORTING  &XCAR   &info_schema  &none     &trans  &kp F4  &kp F5  &kp F6  &kp F11  &none
+&none  &perc_sql                   &none           &none   &none         &none     &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
+                                                   &trans  &trans        &trans    &trans  &trans  &trans
             >;
         };
     };
