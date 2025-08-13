@@ -68,7 +68,7 @@
         NP: NP {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp NUMBER_3 &kp HASH &kp LS(J) &kp F &kp L &kp S &kp J &kp F &kp L &kp S>;
+            bindings = <&kp NUMBER_4 &kp DOLLAR &kp LS(J) &kp F &kp L &kp S &kp J &kp F &kp L &kp S>;
             label = "NP";
         };
 
