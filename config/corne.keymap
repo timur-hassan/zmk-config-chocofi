@@ -8,7 +8,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/pointing.h>
 
 &mt {
     tapping-term-ms = <125>;
@@ -113,6 +112,13 @@
             bindings = <&none &kp PRCNT &kp PRCNT &kp S &kp Q &kp L &kp RET &kp LS(S) &kp LS(E) &kp LS(L) &kp LS(E) &kp LS(C) &kp LS(T) &kp SPACE &kp STAR &kp RET &kp LS(F) &kp LS(R) &kp LS(O) &kp LS(M) &kp SPACE>;
             label = "PERC_SQL";
         };
+
+        bml: bml {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp B &kp Y &kp M &kp Y &kp L &kp I &kp F &kp E &kp A &kp N &kp D &kp M &kp Y>;
+            label = "BML";
+        };
     };
 
     keymap {
@@ -141,7 +147,7 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&none  &bt BT_CLR  &mkp MCLK         &mkp MB2          &mkp LCLK               &kp K_APPLICATION    &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
+&none  &bt BT_CLR  &none             &bml              &kp PRINTSCREEN         &kp K_APPLICATION    &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
 &none  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT    &kp TAB                 &mt CAPSLOCK F2      &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &kp K_PLAY_PAUSE  &trans
 &none  &NP         &Npin             &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))       &xl_del_row          &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
                                      &trans            &mt LEFT_CONTROL ENTER  &kp DEL              &trans        &trans         &trans
