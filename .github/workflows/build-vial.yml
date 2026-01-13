@@ -25,7 +25,7 @@ jobs:
           python-version: '3.11'
 
       - name: Convert ZMK keymap to Vial
-        run: python scripts/zmk_to_vial.py --local config/corne.keymap --output chocofi-vial.vil
+        run: python scripts/zmk_to_vial.py --local config/corne.keymap --template scripts/template.vil --output chocofi-vial.vil
 
       - name: Upload Vial config artifact
         uses: actions/upload-artifact@v4

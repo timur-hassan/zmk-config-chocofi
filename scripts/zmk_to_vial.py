@@ -125,6 +125,20 @@ ZMK_TO_QMK = {
     # Special
     "K_APPLICATION": "KC_APPLICATION", "K_APP": "KC_APPLICATION",
     "K_CMENU": "KC_APPLICATION",
+
+    # ZMK-only features (no QMK equivalent - map to KC_NO)
+    "BT_CLR": "KC_NO", "BT_CLR_ALL": "KC_NO",
+    "BT_SEL": "KC_NO",  # Bluetooth select (handled specially in parser)
+    "BT_PRV": "KC_NO", "BT_NXT": "KC_NO",
+    "BT_DISC": "KC_NO",
+    "OUT_TOG": "KC_NO", "OUT_USB": "KC_NO", "OUT_BLE": "KC_NO",
+    "EP_ON": "KC_NO", "EP_OFF": "KC_NO", "EP_TOG": "KC_NO",
+    "EXT_POWER": "KC_NO",
+    "RGB_TOG": "KC_NO", "RGB_EFF": "KC_NO", "RGB_EFR": "KC_NO",
+    "RGB_HUI": "KC_NO", "RGB_HUD": "KC_NO",
+    "RGB_SAI": "KC_NO", "RGB_SAD": "KC_NO",
+    "RGB_BRI": "KC_NO", "RGB_BRD": "KC_NO",
+    "RGB_SPI": "KC_NO", "RGB_SPD": "KC_NO",
 }
 
 # Modifier prefixes for ZMK
@@ -461,6 +475,20 @@ class ZMKParser:
                     macro_idx = list(self.keymap.macros.keys()).index(behavior)
                     keys.append(f"M{macro_idx}")
                     i += 1
+                elif behavior == 'bt':
+                    # Bluetooth behavior: &bt BT_CLR or &bt BT_SEL 0
+                    # ZMK-only, map to KC_NO
+                    if i + 1 < len(tokens):
+                        bt_cmd = tokens[i + 1]
+                        if bt_cmd == 'BT_SEL' and i + 2 < len(tokens):
+                            # &bt BT_SEL X - skip the index too
+                            i += 3
+                        else:
+                            # &bt BT_CLR, etc.
+                            i += 2
+                    else:
+                        i += 1
+                    keys.append("KC_NO")
                 else:
                     # Unknown behavior, try to handle as custom behavior with 2 args
                     if i + 2 < len(tokens) and not tokens[i + 1].startswith('&'):
@@ -478,8 +506,9 @@ class ZMKParser:
 
     def _zmk_key_to_qmk(self, zmk_key: str) -> str:
         """Convert a ZMK keycode to QMK format."""
-        # Handle modifier combinations like LC(X), LS(MINUS), etc.
-        mod_match = re.match(r'(\w+)\((\w+)\)', zmk_key)
+        # Handle modifier combinations like LC(X), LS(MINUS), LG(LS(K)), etc.
+        # Use a more robust regex that handles nested parentheses
+        mod_match = re.match(r'(\w+)\((.+)\)$', zmk_key)
         if mod_match:
             mod = mod_match.group(1)
             inner = mod_match.group(2)
@@ -487,11 +516,7 @@ class ZMKParser:
             qmk_mod = ZMK_MOD_MAP.get(mod, mod)
             qmk_inner = self._zmk_key_to_qmk(inner)
 
-            # Handle special case where inner is already modified
-            if '(' in qmk_inner:
-                return f"{qmk_mod}({qmk_inner})"
-            else:
-                return f"{qmk_mod}({qmk_inner})"
+            return f"{qmk_mod}({qmk_inner})"
 
         # Direct lookup
         if zmk_key in ZMK_TO_QMK:
