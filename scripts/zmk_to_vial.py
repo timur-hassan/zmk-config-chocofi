@@ -529,11 +529,37 @@ class ZMKParser:
         # Default: add KC_ prefix
         return f"KC_{zmk_key}"
 
+    # Mapping of pure modifiers to QMK mod-tap prefixes
+    MOD_TAP_MAP = {
+        "KC_LSHIFT": "LSFT_T",
+        "KC_RSHIFT": "RSFT_T",
+        "KC_LCTRL": "LCTL_T",
+        "KC_RCTRL": "RCTL_T",
+        "KC_LALT": "LALT_T",
+        "KC_RALT": "RALT_T",
+        "KC_LGUI": "LGUI_T",
+        "KC_RGUI": "RGUI_T",
+    }
+
     def _create_tap_dance(self, tap_key: str, hold_key: str, behavior: str = "mt") -> str:
-        """Create a tap dance entry and return its reference."""
+        """Create a mod-tap or tap dance entry and return its reference.
+
+        For pure modifier holds (Shift, Ctrl, Alt, GUI), returns a proper QMK
+        mod-tap keycode like LSFT_T(KC_ENT) which respects Permissive Hold.
+
+        For non-modifier holds (symbols, modified keys), returns a Tap Dance
+        reference since those don't need the Permissive Hold behavior.
+        """
         qmk_tap = self._zmk_key_to_qmk(tap_key)
         qmk_hold = self._zmk_key_to_qmk(hold_key)
 
+        # Check if hold is a pure modifier - use mod-tap instead of tap dance
+        # This ensures Permissive Hold works correctly for modifier keys
+        if qmk_hold in self.MOD_TAP_MAP:
+            mod_tap_prefix = self.MOD_TAP_MAP[qmk_hold]
+            return f"{mod_tap_prefix}({qmk_tap})"
+
+        # For non-modifier holds, use Tap Dance
         # Get tapping term from behavior
         tapping_term = 140  # Default
         if behavior in self.keymap.behaviors:
