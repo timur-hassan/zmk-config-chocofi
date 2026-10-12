@@ -4,21 +4,62 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
+/*
+ * Ported from the wired RP2040 chocofi on 2026-10-12, by decoding a Vial export
+ * (~/Downloads/mylayout.vil) back into key positions. Every key that does
+ * something on the wired board does the same thing here, except the three
+ * macros listed below.
+ *
+ * Three Vial text macros were deliberately NOT ported, because a ZMK keymap is
+ * source code in a public git repo whereas Vial keeps macros on the keyboard
+ * itself. Their contents are credentials and are recorded nowhere in this repo:
+ *   - Vial M2 -> layer 1 pos 3  is now &none
+ *   - Vial M4 -> layer 3 pos 14 is now &none
+ *   - Vial M5 -> layer 3 pos 15 is now &none
+ * Vial M3 is a plain email address and is kept, as &email.
+ *
+ * Bluetooth control survives ONLY on positions that are KC_NO (dead) in the Vial
+ * layout, so nothing a key does on the wired board was displaced. The one real
+ * casualty: layer 1 pos 32 was BT_SEL 2 and is now PIPE, so the profiles were
+ * renumbered to a contiguous 0-3.
+ *
+ * Timing is matched to the wired board rather than tuned for ZMK. The global &mt
+ * is 125 ms tap-preferred with quick-tap-ms 100, mirroring Vial QMK settings 4
+ * and 10. ZMK's require-prior-idle-ms was REMOVED: it has no QMK counterpart, so
+ * it made holds harder to trigger here than on the wired board. If fast typing
+ * ever emits stray symbols, adding `require-prior-idle-ms = <100>;` back to &mt
+ * is the fix -- but it will no longer feel like the wired board.
+ *
+ * Vial's layer 4 is deliberately NOT ported, at Timur's request. It held plain
+ * QWERTY with every tap-dance stripped out and literal Space/Ctrl/Shift thumbs
+ * -- i.e. it made the board behave like an ordinary keyboard -- but its purpose
+ * is not recorded anywhere, so don't assume one. It was unreachable in any case:
+ * no MO(4)/TO(4)/TG(4)/DF(4) exists anywhere in the export, only the TO(0) exit
+ * inside the layer itself.
+ *
+ * Position map (42-key corne shield; the outer pinky columns are &none because
+ * the chocofi is 3x5+3 and those keys do not physically exist):
+ *    0  1  2  3  4  5  |  6  7  8  9 10 11
+ *   12 13 14 15 16 17  | 18 19 20 21 22 23
+ *   24 25 26 27 28 29  | 30 31 32 33 34 35
+ *            36 37 38  | 39 40 41
+ */
+
 &mt {
-    tapping-term-ms = <125>;
-    flavor = "tap-preferred";
-    require-prior-idle-ms = <100>;
+    tapping-term-ms = <125>;    // Vial QMK setting 4
+    flavor = "tap-preferred";   // matches QMK's default mod-tap resolution
+    quick-tap-ms = <100>;       // Vial QMK setting 10 (QUICK_TAP_TERM)
 };
 
 / {
     combos {
         compatible = "zmk,combos";
 
+        // Vial: LT1(KC_ESCAPE) + LT2(KC_BSPACE) -> MO(3). Same two inner thumbs.
         Thumbs {
             bindings = <&mo 3>;
             key-positions = <38 39>;
@@ -27,48 +68,80 @@
     };
 
     behaviors {
-        mt0: mt0 {
+        // Vial tap dances carry per-key terms. These reproduce the ones that
+        // differ from the global 125 ms: TD(5)/TD(6) at 100, TD(16) at 110,
+        // TD(14)/TD(15) at 120. Same flavor and quick-tap as the global &mt.
+        ht100: ht100 {
             compatible = "zmk,behavior-hold-tap";
-            label = "MOD Tap 0";
+            label = "HOLD TAP 100";
             bindings = <&kp>, <&kp>;
-
             #binding-cells = <2>;
-            tapping-term-ms = <140>;
-            flavor = "hold-preferred";
+            tapping-term-ms = <100>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <100>;
         };
 
-        mti: mti {
+        ht110: ht110 {
             compatible = "zmk,behavior-hold-tap";
-            label = "MTI";
+            label = "HOLD TAP 110";
             bindings = <&kp>, <&kp>;
-
             #binding-cells = <2>;
-            tapping-term-ms = <225>;
+            tapping-term-ms = <110>;
             flavor = "tap-preferred";
-            require-prior-idle-ms = <200>;
+            quick-tap-ms = <100>;
+        };
+
+        ht120: ht120 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD TAP 120";
+            bindings = <&kp>, <&kp>;
+            #binding-cells = <2>;
+            tapping-term-ms = <120>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <100>;
+        };
+
+        // Vial TD(29)/TD(30): tap fires the keycode, hold past 200 ms does
+        // NOTHING AT ALL -- no key, no repeat. Reproduced with &none as the hold
+        // binding. Invoke as `&ht200n 0 <keycode>`; the 0 goes to &none, unused.
+        ht200n: ht200n {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD TAP 200 TAP ONLY";
+            bindings = <&none>, <&kp>;
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
         };
     };
 
     macros {
-        xl_del_row: xl_del_row {
+        // Vial M0
+        scr: scr {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LC(MINUS) &kp R &kp ENTER>;
-            label = "XL_DEL_ROW";
+            bindings = <&kp SLASH &kp S &kp C &kp R>;
+            label = "SCR";
         };
 
+        // Vial M3
+        email: email {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <
+                &kp T &kp I &kp M &kp U &kp R &kp DOT
+                &kp H &kp A &kp S &kp S &kp A &kp N
+                &kp AT
+                &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M
+            >;
+            label = "EMAIL";
+        };
+
+        // Vial M1. Defined but bound nowhere, on either board.
         xl_all_borders: xl_all_borders {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LEFT_ALT &kp H &kp B &kp A>;
             label = "XL_ALL_BORDERS";
-        };
-
-        bml: bml {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none &kp B &kp Y &kp M &kp Y &kp L &kp I &kp F &kp E &kp A &kp N &kp D &kp M &kp Y>;
-            label = "BML";
         };
     };
 
@@ -76,57 +149,51 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+            // Tap on top, hold underneath.
+            //        Q=   W~   E!   R@   T^   |  Y'   U?   I    O*   P
+            //        A/L1 S_   D-   Ftab G`   |  H    J    K    L    ;/L2
+            //        Zctl Xcut Ccpy Vpst B&   |  N#   M%   ,<   .>   /\
+            //             alt  ctl/spc L2/bsp | L1/esc sft/ent gui
 
             bindings = <
-&none  &mt EQUAL Q  &mt TILDE W  &mt EXCL E    &mt AT_SIGN R           &mt CARET T        &mt SQT Y   &mt QUESTION U         &mti PIPE I          &mt ASTERISK O           &kp P                &none
-&none  &lt 1 A      &mt UNDER S  &mt MINUS D   &mt TAB F               &mt GRAVE G        &kp H       &kp J                  &kp K                &kp L                    &lt 2 SEMICOLON      &none
-&none  &mt LC(Z) Z  &mt LC(X) X  &mt LC(C) C   &mt LC(V) V             &mt AMPERSAND B    &mt HASH N  &mt PERCENT M          &mt LESS_THAN COMMA  &mt GREATER_THAN PERIOD  &mt BACKSLASH SLASH  &none
-                                 &kp LEFT_ALT  &mt LEFT_CONTROL SPACE  &lt 2 BACKSPACE    &lt 1 ESC   &mt0 LEFT_SHIFT ENTER  &kp LEFT_GUI
+&none  &mt EQUAL Q          &mt TILDE W     &mt EXCL E      &mt AT R                &mt CARET T        &ht100 SQT Y  &ht100 QUESTION U      &kp I                    &mt ASTERISK O              &kp P                &none
+&none  &lt 1 A              &mt UNDER S     &mt MINUS D     &mt TAB F               &mt GRAVE G        &kp H         &kp J                  &kp K                    &kp L                       &lt 2 SEMICOLON      &none
+&none  &mt LEFT_CONTROL Z   &ht120 LC(X) X  &ht120 LC(C) C  &ht110 LC(V) V          &mt AMPERSAND B    &mt HASH N    &mt PERCENT M          &mt LESS_THAN COMMA      &mt GREATER_THAN PERIOD     &mt BACKSLASH SLASH  &none
+                                            &kp LEFT_ALT    &mt LEFT_CONTROL SPACE  &lt 2 BACKSPACE    &lt 1 ESC     &mt LEFT_SHIFT ENTER  &kp LEFT_GUI
             >;
         };
 
         lower_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
+            // Navigation, window management, and the Bluetooth controls, which
+            // sit only on keys that are dead in the Vial layout.
             bindings = <
-&none  &bt BT_CLR  &none             &bml                 &kp PRINTSCREEN         &kp K_APPLICATION    &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP   &kp END       &kp PRINTSCREEN   &none
-&none  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT       &kp TAB                 &mt CAPSLOCK F2      &kp LEFT      &kp DOWN       &kp UP        &kp RIGHT     &kp K_PLAY_PAUSE  &trans
-&none  &none       &none             &mt LG(LS(K)) LG(K)  &mt LG(LS(J)) LG(J)     &xl_del_row          &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans
-                                     &trans               &mt LEFT_CONTROL ENTER  &kp DEL              &trans        &trans         &trans
+&none  &bt BT_CLR  &kp KP_SLASH      &none                    &kp PRINTSCREEN          &kp K_APPLICATION    &kp HOME      &kp PAGE_DOWN  &kp PAGE_UP  &kp END       &kp PRINTSCREEN  &none
+&none  &trans      &kp LEFT_CONTROL  &kp LEFT_SHIFT           &kp TAB                  &mt CAPSLOCK F2      &kp LEFT      &kp DOWN       &kp UP       &kp RIGHT     &kp SCROLLLOCK   &trans
+&none  &none       &none             &mt LS(LG(K)) LC(LG(K))  &mt LS(LG(J)) LC(LG(J))  &scr                 &bt BT_SEL 0  &bt BT_SEL 1   &kp PIPE     &bt BT_SEL 2  &bt BT_SEL 3     &trans
+                                     &trans                   &mt LEFT_CONTROL ENTER   &kp DEL              &trans        &trans         &trans
             >;
         };
 
         raise_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
+            // Symbols on the left, numpad on the right.
             bindings = <
-&none  &kp EQUAL  &kp TILDE       &kp EXCLAMATION       &kp AT                 &kp PRCNT          &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH   &none
-&none  &kp MINUS  &kp UNDERSCORE  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &xl_all_borders    &kp MINUS     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COMMA   &none
-&none  &none      &none           &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AMPERSAND      &kp PLUS      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD  &none
-                                  &kp LEFT_ALT          &trans                 &trans             &none         &trans        &kp NUMBER_0
+&none  &kp EQUAL  &kp TILDE       &kp EXCL          &kp AT             &kp PERCENT      &kp ASTERISK  &kp N7  &kp N8  &kp N9  &kp SLASH   &none
+&none  &kp MINUS  &kp UNDERSCORE  &kp LPAR          &kp RPAR           &kp SQT          &kp MINUS     &kp N4  &kp N5  &kp N6  &kp COMMA   &none
+&none  &kp ESC    &none           &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp AMPERSAND    &kp KP_PLUS   &kp N1  &kp N2  &kp N3  &kp PERIOD  &none
+                                  &kp LEFT_ALT      &trans             &trans           &none         &trans  &kp N0
             >;
         };
 
         FN {
+            // Reached by the two-inner-thumb combo. Function keys plus the one
+            // text macro that was safe to port.
             bindings = <
-&none  &none  &none  &none   &none   &none     &trans  &kp F7  &kp F8  &kp F9  &kp F10  &none
-&none  &none  &none  &none   &none   &none     &trans  &kp F4  &kp F5  &kp F6  &kp F11  &none
-&none  &none  &none  &none   &none   &none     &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
-                     &trans  &trans  &trans    &trans  &trans  &trans
+&none  &none   &none  &none             &none              &none     &trans  &kp F7  &kp F8  &kp F9  &kp F10  &none
+&none  &email  &none  &none             &none              &none     &trans  &kp F4  &kp F5  &kp F6  &kp F11  &none
+&none  &none   &none  &ht200n 0 LC(LG(LEFT))  &ht200n 0 LC(LG(RIGHT))  &none     &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
+                      &trans            &trans             &trans    &trans  &trans  &trans
             >;
         };
+
     };
 };
