@@ -16,18 +16,31 @@
 #     cmake-args: -DCONFIG_ZMK_USB_LOGGING=y
 #     artifact-name: corne_left_with_logging
 #
-# NOTE: the examples above are ZMK's stock template and are now stale. Since
-# ZMK moved to Zephyr's hardware model v2, there is no `nice_nano_v2` board --
-# the only nice!nano target is `nice_nano`, and the v2 hardware is a board
-# REVISION. ZMK declares `default_revision: "2.0.0"` in
-# app/boards/nicekeyboards/nice_nano/nice_nano.zmk.yml, so plain `nice_nano`
-# already builds for the v2 board. Using `nice_nano_v2` fails the build
-# outright with "No board named 'nice_nano_v2' found" (tried 2026-10-12).
+# NOTE: the examples above are ZMK's stock template and are now stale.
+#
+# ZMK has moved to Zephyr 4.1 and its hardware model v2, which changed the
+# board target in TWO independent ways. Both must be right or the build fails:
+#
+#   1. REVISION. There is no `nice_nano_v2` board any more. There is one
+#      `nice_nano` with revisions 1.0.0 and 2.0.0, and 2.0.0 is the default.
+#      Getting this wrong fails at CMake with "No board named ... found".
+#   2. VARIANT. Every board in the ZMK tree must now be selected with its
+#      `zmk` variant, because ZMK extends the stock Zephyr board rather than
+#      replacing it. Plain `nice_nano` builds the STOCK Zephyr board, links
+#      successfully, and is then rejected by the workflow's "Missing ZMK
+#      Compat" guard -- so a bare board name looks like a compile failure
+#      while actually being a board-selection mistake.
+#
+# `nice_nano//zmk` is ZMK's documented replacement for `nice_nano_v2`. The
+# empty middle field is the SoC, omitted because the board has only one. In
+# full it is `nice_nano@2.0.0//zmk`; for the V1 board it would be
+# `nice_nano@1.0.0//zmk`. Both failures were hit in order on 2026-10-12.
+# Reference: https://zmk.dev/blog/2025/12/09/zephyr-4-1#zmk-board-variant
 ---
 include:
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: corne_left
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: corne_right
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: settings_reset
