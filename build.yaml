@@ -16,11 +16,18 @@
 #     cmake-args: -DCONFIG_ZMK_USB_LOGGING=y
 #     artifact-name: corne_left_with_logging
 #
+# NOTE: the examples above are ZMK's stock template and are now stale. Since
+# ZMK moved to Zephyr's hardware model v2, there is no `nice_nano_v2` board --
+# the only nice!nano target is `nice_nano`, and the v2 hardware is a board
+# REVISION. ZMK declares `default_revision: "2.0.0"` in
+# app/boards/nicekeyboards/nice_nano/nice_nano.zmk.yml, so plain `nice_nano`
+# already builds for the v2 board. Using `nice_nano_v2` fails the build
+# outright with "No board named 'nice_nano_v2' found" (tried 2026-10-12).
 ---
 include:
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_left
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: corne_right
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: settings_reset
